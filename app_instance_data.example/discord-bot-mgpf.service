@@ -1,0 +1,13 @@
+[Unit]
+Description=Discord bot daemon for mgpf server
+
+[Service]
+WorkingDirectory=/home/ubuntu/.bin/discord_bot_for_mgpf/
+ExecStart=/home/ubuntu/.bin/discord_bot_for_mgpf/discord_bot_client
+User=ubuntu
+Restart=always
+RestartSec=10s
+Type=simple
+
+[Install]
+WantedBy=multi-user.target
