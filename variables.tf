@@ -1,6 +1,7 @@
 variable "compartment_id" {
   description = "OCID from your tenancy page"
   type        = string
+  sensitive   = true
 }
 variable "region" {
   description = "region where you have OCI tenancy"
@@ -42,4 +43,14 @@ variable "discord_bot_dirname" {
 variable "app_instance_ssh_port" {
   type    = number
   default = 22
+}
+
+variable "azure_username" {
+  type      = string
+  sensitive = true
+}
+
+variable "azure_password" {
+  type      = string
+  sensitive = true
 }

@@ -63,11 +63,12 @@ resource "oci_core_instance" "app_instance" {
   provisioner "remote-exec" {
     inline = [
       "mv ~/${var.app_instance_data_path}/${var.discord_bot_dirname} ~/.bin/",
-      "chmod 0755 ~/.bin/${var.discord_bot_dirname}/${var.discord_bot_client_filename}"
+      "chmod 0755 ~/.bin/${var.discord_bot_dirname}/${var.discord_bot_client_filename}",
+      "curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash",
+      "az login -u ${var.azure_username} -p ${var.azure_password}"
     ]
   }
 
-  preserve_boot_volume = false
   create_vnic_details {
     assign_public_ip = true
     subnet_id        = oci_core_subnet.public_app_subnet.id

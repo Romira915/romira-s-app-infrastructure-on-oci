@@ -2,3 +2,5 @@ compartment_id       = "<ocid>"
 ssh_public_key_path  = "<public key>"
 ssh_private_key_path = "<private key>"
 app_instance_ssh_port  = <ssh port>
+azure_username        = "<username>"
+azure_password        = "<password>"
