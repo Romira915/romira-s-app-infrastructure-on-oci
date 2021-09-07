@@ -23,6 +23,7 @@ resource "oci_core_instance" "app_instance" {
           "wget",
           "vim",
           "iptables-persistent",
+          "rsync"
         ],
         write_files : [
           {
