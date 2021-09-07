@@ -10,6 +10,9 @@ administrator = ["<ADMIN ID> : int"]
 prefix = "~"
 token = "<Discord token>"
 
+[gameinfo]
+sdtd_password = "<pass>"
+
 [log]
 term_log = "info"
 write_log = "warn"
