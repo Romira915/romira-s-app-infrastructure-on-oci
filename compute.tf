@@ -81,16 +81,16 @@ resource "oci_core_instance" "app_instance" {
 }
 
 resource "null_resource" "download_discord_bot_client" {
-  # triggers = {
-  #   timestamp = timestamp()
-  # }
+  triggers = {
+    timestamp = timestamp()
+  }
 
   provisioner "local-exec" {
-    command = fileexists("$path") ? "" : "wget $url -O $path"
+    command = "wget $url -O $path/assets.zip && unzip -od $path $path/assets.zip ${var.discord_bot_client_filename} && rm -f $path/assets.zip"
 
     environment = {
       url  = jsondecode(data.http.discord_bot_client_latest_url.body)[0]["browser_download_url"]
-      path = format("%s/%s/%s", var.app_instance_data_path, var.discord_bot_dirname, var.discord_bot_client_filename)
+      path = format("%s/%s", var.app_instance_data_path, var.discord_bot_dirname)
     }
   }
 }
