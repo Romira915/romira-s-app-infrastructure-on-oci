@@ -52,6 +52,33 @@ resource "oci_core_security_list" "security_list_for_app" {
       min = var.app_instance_ssh_port
     }
   }
+  ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "Http(s) port"
+    tcp_options {
+      max = 80
+      min = 80
+    }
+  }
+  ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "ssh port"
+    tcp_options {
+      max = 443
+      min = 443
+    }
+  }
+  ingress_security_rules {
+    protocol    = "6"
+    source      = "0.0.0.0/0"
+    description = "ssh port"
+    tcp_options {
+      max = 7080
+      min = 7080
+    }
+  }
   egress_security_rules {
     protocol    = "all"
     destination = "0.0.0.0/0"
